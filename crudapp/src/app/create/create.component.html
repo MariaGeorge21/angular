@@ -1,0 +1,33 @@
+<h3>Save a product</h3>
+<form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="">Name</label>
+        <input type="text" class="form-control" id="name"
+        [(ngModel)]="product.name" name="name">
+        <br>
+        <br>
+    </div>
+    <div class="form-group">
+        <label for="">productqty</label>
+        <input type="text" class="form-control" id="qty"
+        [(ngModel)]="product.qty" name="qty">
+        <br>
+        <br>
+    </div>
+    <div class="form-group">
+        <label for="">productprice</label>
+        <input type="text" class="form-control" id="price"
+        [(ngModel)]="product.price" name="price">
+        <br>
+        <br>
+    </div>
+    <div class="form-group">
+        <label for="">productdescription</label>
+        <input type="text" class="form-control" id="description"
+        [(ngModel)]="product.description" name="description">
+        <br>
+        <br>
+    </div>
+    <button class="btn btn-success" type="submit">Submit</button>
+
+</form>

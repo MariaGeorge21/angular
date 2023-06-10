@@ -1,0 +1,53 @@
+<div class="container">
+    <h2 class="mt-4">Products List</h2>
+    <table class="table table-bordered mt-4">
+      <thead class="thead-dark">
+        <tr>
+          <th>Product ID</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products">
+          <td>{{ product.id }}</td>
+          <td>{{ product.name }}</td>
+          <td>{{ product.description }}</td>
+          <td>{{ product.price }}</td>
+          <td>{{ product.quantity }}</td>
+          <td>
+            <button class="btn btn-danger" (click)="deleteProduct(product.id)">Delete</button>
+            <button class="btn btn-primary" (click)="selectProduct(product)">Update</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <div *ngIf="selectedProduct" class="mt-4">
+      <h3>{{ selectedProduct.id ? 'Update' : 'Create' }} Product</h3>
+      <form (submit)="saveUpdatedProduct()">
+        <div class="form-group">
+          <label for="nameInput">Name:</label>
+          <input type="text" [(ngModel)]="selectedProduct.name" name="name" required class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="descriptionInput">Description:</label>
+          <input type="text" [(ngModel)]="selectedProduct.description" name="description" required class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="priceInput">Price:</label>
+          <input type="number" [ngModel]="selectedProduct.price" (ngModelChange)="selectedProduct.price = $event" name="price" required class="form-control">
+
+        </div>
+        <div class="form-group">
+          <label for="quantityInput">Quantity:</label>
+          <input type="number" [(ngModel)]="selectedProduct.quantity" name="quantity" required class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary">{{ selectedProduct.id ? 'Update' : 'Create' }} Product</button>
+      </form>
+    </div>
+  </div>
+  
